@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show_sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/testDB
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
