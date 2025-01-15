@@ -10,11 +10,17 @@ spring:
       hibernate:
         format_sql: true
 
+#  datasource:
+#    url: jdbc:h2:tcp://localhost/~/testDB
+#    username: sa
+#    password:
+#    driver-class-name: org.h2.Driver
+
   datasource:
-    url: jdbc:h2:tcp://localhost/~/testDB
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
+    url: jdbc:mariadb://localhost:3306/querydsl
+    username: root
+    password: root
+    driver-class-name: org.mariadb.jdbc.Driver
 
 
   h2:

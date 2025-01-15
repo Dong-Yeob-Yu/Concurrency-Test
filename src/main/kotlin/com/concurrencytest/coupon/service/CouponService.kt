@@ -14,6 +14,10 @@ class CouponService (
     private val couponV2Repository: CouponV2Repository,
 ) {
 
+    fun getCoupon(couponId: Long): Coupon {
+        return couponRepository.findById(couponId).orElseThrow { throw IllegalArgumentException("not found coupon ") }
+    }
+
     @Transactional
     fun saveCoupon(coupon: Coupon){
         couponRepository.save(coupon)
@@ -21,8 +25,10 @@ class CouponService (
 
     @Transactional
     fun decreaseCoupon(couponId: Long){
-        val findById: Coupon = couponRepository.findById(couponId).orElseThrow { IllegalArgumentException("No coupon with id $couponId") }
-        findById.quantity -= 1
+        val coupon: Coupon = couponRepository.findById(couponId).orElseThrow { IllegalArgumentException("No coupon with id $couponId") }
+        if(coupon.quantity != 0) {
+            coupon.quantity -= 1
+        }
     }
 
     @Transactional
